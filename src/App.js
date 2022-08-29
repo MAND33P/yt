@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowseRouter, Routes,  Route, BrowserRouter} from 'react-router-dom';
+import {Box} from '@mui/material';
+import Navbar  from './components/Navbar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () =>   (
+    <BrowserRouter>
+        <Box sx={{backgroundColor: '#000'}}>
+            <Navbar  />
+            <Routes>
+                <Route path ='/' exact element={<Feed/>}      />
+                <Route path ='/video/:id' elment= {<VideoDetails/>} />
+                <Route path ='/channel/:id' elment= {<ChannelDetails/>} />
+                <Route path ='/search/:searchTerm' elment= {<SearchFeed/>} />
 
-export default App;
+            </Routes>
+
+        </Box>
+    </BrowserRouter>
+  )
+
+
+export default App
